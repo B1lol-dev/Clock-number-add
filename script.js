@@ -1,9 +1,8 @@
 function createClockNumbers() {
     const numbersContainer = document.querySelector('.numbers');
-    // Очищаем контейнер
     numbersContainer.innerHTML = '';
     
-    // Добавляем начальные числа (1-12)
+    // 0-12 son qowiw
     for (let i = 1; i <= 12; i++) {
         const number = document.createElement('div');
         number.textContent = i;
@@ -11,7 +10,6 @@ function createClockNumbers() {
         numbersContainer.appendChild(number);
     }
     
-    // Распределяем все числа по кругу
     redistributeNumbers();
 }
 
@@ -20,7 +18,7 @@ function addNumber() {
     const number = parseInt(input.value);
     
     if (isNaN(number)) {
-        alert('Пожалуйста, введите корректное число');
+        alert('Please enter normal number');
         return;
     }
     
@@ -37,8 +35,9 @@ function addNumber() {
 function redistributeNumbers() {
     const numbers = document.querySelectorAll('.number');
     const totalNumbers = numbers.length;
-    const radius = 135; // Радиус размещения чисел
+    const radius = 135; // Sonlani qoyiw radiusi
     
+    // pasdigi code xz cunki inetdan qaradm
     numbers.forEach((number, index) => {
         // Вычисляем угол для каждого числа (начинаем с -90 градусов, чтобы 12 было сверху)
         const angle = ((index * (360 / totalNumbers)) - 90) * (Math.PI / 180);
@@ -47,7 +46,6 @@ function redistributeNumbers() {
         const x = Math.cos(angle) * radius;
         const y = Math.sin(angle) * radius;
         
-        // Устанавливаем позицию через transform
         number.style.transform = `translate(${x}px, ${y}px)`;
     });
 }
